@@ -1,0 +1,76 @@
+---
+- name: (UFW) Install UFW
+  package:
+    name: ufw
+    state: latest
+
+- name: (UFW) Set default incoming policy to deny
+  ufw:
+    policy: deny
+    direction: incoming
+
+- name: (UFW) Set default outgoing policy to deny
+  ufw:
+    policy: deny
+    direction: outgoing
+
+- name: (UFW) Allow inbound SSH traffic
+  ufw:
+    rule: allow
+    port: "{{ ssh_port }}"
+    proto: tcp
+    direction: in
+
+- name: (UFW) Allow outbound SSH traffic
+  ufw:
+    rule: allow
+    direction: out
+    proto: tcp
+    port: 22
+
+- name: (UFW) Allow outbound HTTP traffic
+  ufw:
+    rule: allow
+    direction: out
+    proto: tcp
+    port: 80
+
+- name: (UFW) Allow outbound HTTPS traffic
+  ufw:
+    rule: allow
+    direction: out
+    proto: tcp
+    port: 443
+
+- name: (UFW) Allow outbound NTP traffic
+  ufw:
+    rule: allow
+    direction: out
+    proto: udp
+    port: 123
+
+- name: (UFW) Allow outbound HKS traffic
+  ufw:
+    rule: allow
+    direction: out
+    proto: tcp
+    port: 11371
+
+- name: (UFW) Allow outbound DNS traffic
+  ufw:
+    rule: allow
+    direction: out
+    proto: udp
+    port: 53
+
+- name: (UFW) Allow outbound SMTPS-587 traffic
+  ufw:
+    rule: allow
+    direction: out
+    proto: tcp
+    port: 587
+
+- name: (UFW) Enable the firewall
+  ufw:
+    state: enabled
+    policy: deny

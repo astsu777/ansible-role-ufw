@@ -1,0 +1,5 @@
+---
+# Default variables for this role
+
+# SSH listening port
+ssh_port: 22
