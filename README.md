@@ -1,7 +1,7 @@
 Ansible Role: UFW Firewall
 =========
 
-This role installs UFW and configures the local firewall to filter both inbound and outbound traffic.
+This role installs UFW and configures the local firewall to filter **BOTH** inbound and outbound traffic.
 
 By default, the only inbound traffic accepted is SSH (the port is a variable in this case).
 
